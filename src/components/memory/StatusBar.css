@@ -1,0 +1,10 @@
+.status-bar {
+  display: flex;
+  align-items: center;
+}
+.status {
+  flex: 1;
+}
+.button {
+  flex: 0;
+}
