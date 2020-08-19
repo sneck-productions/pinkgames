@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./index.css";
 import StatusBar from "./StatusBar";
@@ -41,11 +41,31 @@ function flipCard(cards, cardToFlip) {
 
 function Memory() {
   //const [cards, setCards] = useState(generateCards()); [<current state><function to update state>] = useState(<initial state>)
+
   const [game, setGame] = useState({
     cards: generateCards(),
     firstCard: undefined,
     secondCard: undefined
   });
+
+  const [startTime, setStartTime] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  // useState(<effect funtion>, <dependency array> - optional)
+  // <dependency array> :
+  // *undefined: effect function will be run on every render
+  // *empty array -> []:  effect will run only on the first render
+  ///* [value1, value2]: effect will run when any of the values change
+  //effect funtion returns a cleanup function (optional)
+  //that runs next time the effect function is run OR when the component unmounts (disapperas from the DOM)
+  useEffect(() => {
+    if (startTime !== 0) {
+      const intervalId = setInterval(() => {
+        setElapsedTime(Date.now() - startTime);
+      }, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [startTime]);
 
   function onCardClicked(card) {
     // If the card is already flipped there is nothing we need to do (write an if-statement with a return; inside)
@@ -89,6 +109,10 @@ function Memory() {
         };
       }
     });
+
+    setStartTime(oldStartTime =>
+      oldStartTime === 0 ? Date.now() : oldStartTime
+    );
   }
 
   /* Runs when the restart button is clicked, resets the state with new cards */
@@ -98,10 +122,15 @@ function Memory() {
       firstCard: undefined,
       secondCard: undefined
     });
+    setStartTime(0);
+    setElapsedTime(0);
   }
   return (
     <div className="game-container">
-      <StatusBar status="Time: 0s" onRestart={onRestart}></StatusBar>
+      <StatusBar
+        status={`Time: ${elapsedTime}ms`}
+        onRestart={onRestart}
+      ></StatusBar>
       <div className="memory-grid">
         {game.cards.map(card => (
           <MemoryCard
