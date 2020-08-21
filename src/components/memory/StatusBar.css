@@ -8,3 +8,7 @@
 .button {
   flex: 0;
 }
+
+p {
+  color: white;
+}

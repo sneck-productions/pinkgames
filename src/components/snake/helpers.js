@@ -92,8 +92,21 @@ function generateNewTail(oldSnake, oldFood, newHead) {
   }
 
   return newTail;
+}
 
-  /*let newTail = [oldsnake.head];
+export function isGameOver(game) {
+  const snake = game.snake;
+  return (
+    isOutOfBounds(snake.head) ||
+    snake.tail.some(cell => isEqual(cell, snake.head))
+  );
+}
+
+function isOutOfBounds(cell) {
+  return cell.x < 0 || cell.x >= width || cell.y < 0 || cell.y >= height;
+}
+
+/*let newTail = [oldsnake.head];
   newTail = newTail.concat(oldSnake.tail);
 
   newTail = [oldSnake.head, ...oldSnake.tail];
@@ -101,4 +114,3 @@ function generateNewTail(oldSnake, oldFood, newHead) {
   if(isEqual(newHead, oldFood)){
     newTail.pop();
   }*/
-}
