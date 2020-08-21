@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import StatusBar from "./StatusBar";
+import StatusBar from "../StatusBar";
 import MemoryCard from "./MemoryCard";
 import * as utils from "../../utils";
+import ResultModal from "../ResultModal";
 
 const colors = [
   "pink",
@@ -76,6 +77,7 @@ function Memory() {
   const [startTime, setStartTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [win, setWin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // useEffect(<effect function>, <dependency array> - optional)
   // <dependency array>:
@@ -96,14 +98,7 @@ function Memory() {
 
   useEffect(() => {
     if (win) {
-      utils
-        .saveScore("memory", {
-          name: "Malin",
-          timeMs: elapsedTime
-        })
-        .then(() => console.log("Score saved."))
-        .then(() => utils.fetchLeaderboard("memory"))
-        .then(leaderboard => console.log(leaderboard));
+      setShowModal(true);
     }
   }, [win]);
 
@@ -218,6 +213,12 @@ function Memory() {
           />
         ))}
       </div>
+      <ResultModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        header={"Yay! You won!"}
+        body={"Your time was: " + elapsedTime + "ms."}
+      ></ResultModal>
     </div>
   );
 }
