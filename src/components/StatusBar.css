@@ -7,8 +7,9 @@
 }
 .button {
   flex: 0;
+  color: pink;
 }
 
 p {
-  color: white;
+  color: pink;
 }
