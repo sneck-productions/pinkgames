@@ -7,3 +7,8 @@
   color: pink;
   padding: 20px;
 }
+
+.game-container {
+  width: 40vw;
+  margin: 1vw auto;
+}
