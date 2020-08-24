@@ -3,7 +3,7 @@ import "./index.css";
 import StatusBar from "../StatusBar";
 import MemoryCard from "./MemoryCard";
 import * as utils from "../../utils";
-import * as helpers from "./helpers.js";
+import * as helpers from "./helpers";
 import ResultModal from "../ResultModal";
 
 function Memory() {

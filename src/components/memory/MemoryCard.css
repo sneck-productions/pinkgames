@@ -2,29 +2,43 @@
   border: 3px solid white;
   border-radius: 5px;
   background-color: white;
+  background: url("../../images/moob.jpg");
+  background-size: cover;
 }
 
 .pink {
-  background-color: #ff43d0;
+  background: url("../../images/img1.jpg");
+  background-size: cover;
 }
 .red {
-  background-color: #ff0900;
+  background: url("../../images/img2.jpg");
+  background-size: cover;
 }
 .orange {
-  background-color: #ff7f00;
+  background: url("../../images/img3.jpg");
+  background-size: cover;
 }
 .yellow {
-  background-color: #ffef00;
+  background: url("../../images/img4.jpg");
+  background-size: cover;
 }
 .teal {
-  background-color: #63d3df;
+  background: url("../../images/img5.jpg");
+  background-size: cover;
 }
 .green {
-  background-color: #00f11d;
+  background: url("../../images/img6.jpg");
+  background-size: cover;
 }
 .blue {
-  background-color: #0079ff;
+  background: url("../../images/img7.jpg");
+  background-size: cover;
 }
 .purple {
-  background-color: #a800ff;
+  background: url("../../images/img8.jpg");
+  background-size: cover;
+}
+
+.color {
+  background-size: cover;
 }

@@ -1,6 +1,7 @@
 .status-bar {
   display: flex;
   align-items: center;
+  background-color: black;
 }
 .status {
   flex: 1;
@@ -8,8 +9,10 @@
 .button {
   flex: 0;
   color: pink;
+  margin: 10px;
 }
 
-p {
+.status-bar p {
   color: pink;
+  margin: 10px;
 }

@@ -7,7 +7,7 @@ function Navigation() {
   return (
     <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
       <Link to="/" className="navbar-brand">
-        Games
+        Home
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
